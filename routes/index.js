@@ -3,7 +3,16 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  const products = [{
+    title: 'iPhone 12 Mini',
+    description: 'Compact, powerful, dual-camera, 5G, OLED display, A14 Bionic, sleek design.',
+    price: '₹26000',
+    image: 'https://rukminim2.flixcart.com/image/850/1000/ko0d6kw0/mobile/d/h/5/iphone-12-mini-mjqh3hn-a-apple-original-imag2k2xuuyfyusd.jpeg?q=20&crop=false'
+  }]
+
+
+
+  res.render('index', { products});
 });
 
 module.exports = router;
