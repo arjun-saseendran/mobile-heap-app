@@ -1,0 +1,57 @@
+ const products = [{
+        title: 'iPhone 13 Mini',
+                description: The iPhone 13 mini is a compact, high-performance smartphone featuring a 5.4-inch.,
+                price: '₹54899',
+        image: './images/iphone13.jpeg'
+        },
+        {
+        title: 'iPhone 13',
+        description: 'Featuring a 6.1-inch Super Retina XDR display, the powerful A15 Bionic chip.',
+        price: '₹48799',
+        image: './images/iphone13.jpeg'
+    },
+        {
+            title: 'iPhone 13 Pro',
+            description: 'ProMotion technology for smoother scrolling and enhanced responsiveness.',
+            price: '₹119069',
+            image: './images/iphone13pro.jpeg'
+        },
+        {
+            title: 'iPhone 13 Pro Max',
+            description: 'It is driven by the A15 Bionic chip, ensuring top-tier speed and efficiency.',
+            price: '₹124400',
+            image: './images/iphone13promax.jpeg'
+        },
+        {
+            title: 'iPhone 14',
+            description: 'The iPhone 14 features a sleek design, advanced A15 Bionic chip, enhanced camera.',
+            price: '₹56999',
+            image: './images/iphone14.jpeg'
+        },
+        {
+            title: 'iPhone 14 Pro',
+            description: 'The iPhone 14 Pro features a 6.1-inch Super Retina XDR display with ProMotion.',
+            price: '₹129900',
+            image: './images/iphone14pro.jpeg'
+        },
+        {
+            title: 'iPhone 14 Pro Max',
+            description: 'A16 Bionic chip, a sophisticated triple-camera system with superior low-light capabilities.',
+            price: '₹134900',
+            image: './images/iphone14promax.jpeg'
+        },
+        {
+            title: 'iPhone 15 ',
+            description: 'The iPhone 15 features a sleek design, the advanced A16 Bionic chip.',
+            price: '₹71999',
+            image: './images/iphone15.jpeg'
+        },
+        {
+            title: 'iPhone 15 Pro ',
+            description: 'The iPhone 15 Pro features a 6.1-inch Super Retina XDR display with ProMotion.',
+            price: '₹127990',
+            image: './images/iphone15pro.jpeg'
+        }
+
+
+    ]
