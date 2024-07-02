@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 
 
-  res.render('index', { products, admin:true});
+  res.render('index', { products, admin:false});
 });
 
 module.exports = router;
