@@ -1,27 +1,64 @@
 var express = require('express');
 var router = express.Router();
+var productHelper = require('../helpers/product-helpers');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  const products = [{
-    title: 'iPhone 12 Mini',
-    description: 'Compact, powerful, dual-camera, 5G, OLED display, A14 Bionic, sleek design.',
-    price: '₹26000',
-    image: 'https://rukminim2.flixcart.com/image/850/1000/ko0d6kw0/mobile/d/h/5/iphone-12-mini-mjqh3hn-a-apple-original-imag2k2xuuyfyusd.jpeg?q=20&crop=false'
-  }]
+router.get('/', function (req, res, next) {
+    productHelper.getAllProducts().then(products => {
+        res.render("admin/view-products", {admin: true, products});
+    })
 
 
 
-  res.render('admin/view-products',{products, admin:true});
 });
 
-router.get('/add-product', function(req, res, next) {
-  res.render('admin/add-product');
+router.get('/add-product',(req, res) =>{
+res.render('admin/add-product');
 });
+router.post('/add-product', (req, res) =>{
 
-router.post('/add-product', function(req, res, next) {
-  console.log(req.body);
-  console.log(req.files);
-});
+    productHelper.addProduct(req.body, (id) => {
+        let image = req.files.image;
+        image.mv('./public/product-images/' + id + '.jpeg', (error, done) => {
+            if (error) {
+                console.log(error);
+            } else {
+                res.render('admin/add-product');
+            }
+
+
+        });
+
+        res.render('admin/add-product');
+    });
+})
+
+router.get('/delete-product/:id', (req, res) =>{
+let productId = req.params.id;
+productHelper.deleteProduct(productId).then(response => {
+    res.redirect('/admin/');
+})
+})
+router.get('/edit-product/:id', async (req, res) =>{
+let product = await productHelper.getProductDetails(req.params.id);
+
+
+    res.render('admin/edit-product',{product});
+})
+router.post('/edit-product/:id', (req, res) =>{
+
+    productHelper.updateProduct(req.params.id,req.body).then(() => {
+        let id = req.params.id;
+res.redirect('/admin/');
+if(req.files.image){
+    let image = req.files.image;
+    image.mv('./public/product-images/'+id+'.jpeg')
+
+}
+
+
+
+    });
+})
 
 module.exports = router;
