@@ -50,14 +50,11 @@ router.post('/edit-product/:id', (req, res) =>{
     productHelper.updateProduct(req.params.id,req.body).then(() => {
         let id = req.params.id;
 res.redirect('/admin/');
-if(req.files.image){
+if(req?.files?.image){
     let image = req.files.image;
     image.mv('./public/product-images/'+id+'.jpeg')
 
 }
-
-
-
     });
 })
 
