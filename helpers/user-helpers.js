@@ -100,5 +100,17 @@ module.exports = {
                 resolve([]);
             }
         })
+    },
+
+    getCartCount: (userId) => {
+        return new Promise(async (resolve, reject) => {
+            let count = 0;
+            let cart = await db.get().collection(collection.CART_COLLECTION).findOne({user: new ObjectId(userId)});
+            if(cart){
+                count = cart.products.length;
+            }
+            resolve(count);
+
+        })
     }
 }
