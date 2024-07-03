@@ -49,7 +49,7 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             let userCart = await db.get().collection(collection.CART_COLLECTION).findOne({user: new ObjectId(userId)});
             if (userCart) {
-                let proExist = userCart.products.findIndex(product => product.item === productId);
+                let proExist = userCart.products.findIndex(product => product.item == productId);
                 if (proExist !== -1) {
                     db.get().collection(collection.CART_COLLECTION).updateOne({'products.item': new ObjectId(productId)},
                         {
