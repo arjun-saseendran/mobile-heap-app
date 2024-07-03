@@ -60,8 +60,18 @@ router.get('/logout', function (req, res, next) {
     res.redirect('/');
 })
 
-router.get('/cart', verifyLogin, function (req, res) {
+router.get('/cart', verifyLogin, async function (req, res) {
+let products = await userHelper.getCartProducts(req.session.user._id)
+
+
     res.render('user/cart');
+});
+
+router.get('/add-to-cart/:id',verifyLogin, function (req, res) {
+userHelper.addToCart(req.params.id, req.session.user._id).then(result => {
+
+res.redirect('/')
+})
 })
 
 
