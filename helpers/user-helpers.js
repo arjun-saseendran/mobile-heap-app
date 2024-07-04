@@ -186,4 +186,24 @@ module.exports = {
       }
     });
   },
+
+  deleteCartItem: (details) => {
+    details.count = parseInt(details.count);
+    details.quantity = parseInt(details.quantity);
+
+    return new Promise((resolve, reject) => {
+      db.get()
+          .collection(collection.CART_COLLECTION)
+          .updateOne(
+            { _id: new ObjectId(details.cart) },
+            {
+              $pull: { products: { item: new ObjectId(details.product) } },
+            }
+          )
+          .then((response) => {
+            resolve({ removeProduct: true });
+          });
+      
+  })
+}
 };
