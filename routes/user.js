@@ -76,9 +76,13 @@ let products = await userHelper.getCartProducts(req.session.user._id)
 router.get('/add-to-cart/:id',function (req, res) {
 userHelper.addToCart(req.params.id, req.session.user._id).then(result => {
     res.json({status:true});
-
-
 })
+})
+
+router.post('/change-product-quantity', (req, res) => {
+    userHelper.changeProductQuantity(req.body).then(() => {
+
+    })
 })
 
 
