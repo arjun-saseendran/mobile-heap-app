@@ -20,27 +20,23 @@
               /></td>
             <td>{{this.product.title}}</td>
             <td>₹{{this.product.price}}</td>
-
-            <td>
+          <td>
               <button
                 class="cart-item-count mr-3"
-                onclick="changeQuantity('{{this._id}}','{{this.product._id}}',-1)"
-              >-</button>
+                onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user}}', -1)">-</button>
               <span id="{{this.product._id}}">{{this.quantity}}</span>
               <button
                 class="cart-item-count ml-3"
-                onclick="changeQuantity('{{this._id}}','{{this.product._id}}',1)"
-              >+</button>
-            </td>
-            <td>
+                onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user}}', 1)">+</button>
+             </td>
+              <td>
               <a
                 href=""
                 class="btn btn-danger"
                 onclick="deleteCartItem('{{this._id}}','{{this.product._id}}',-1)"
               >Remove</a>
             </td>
-
-          </tr>
+</tr>
         {{/each}}
 
       </tbody>
@@ -48,12 +44,18 @@
     </table>
     <hr />
     <div style="float:right; margin-right: 110px">
-      <h3>Total : ₹{{total}}</h3>
+      <h3>Total : <span id="total">₹{{totalValue}}</span></h3>
       <a class="btn btn-success mt-4" href="/place-order">Place Order</a>
     </div>
   </div>
 
-</section>
+  </section>
+
+
+
+
+
+
 
 
 
