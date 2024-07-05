@@ -13,7 +13,7 @@
         {{#each products}}
           <tr>
 
-            <td><img
+          <td><img
                 style="width: 70px; height: 70px;"
                 src="/product-images/{{this.product._id}}.jpeg"
                 alt=""
@@ -33,7 +33,11 @@
               >+</button>
             </td>
             <td>
-              <a href="" class="btn btn-danger" onclick="deleteCartItem('{{this._id}}','{{this.product._id}}',-1)">Remove</a>
+              <a
+                href=""
+                class="btn btn-danger"
+                onclick="deleteCartItem('{{this._id}}','{{this.product._id}}',-1)"
+              >Remove</a>
             </td>
 
           </tr>
@@ -42,42 +46,16 @@
       </tbody>
 
     </table>
-    <hr>
-    <div style="float:right; margin-right: 110px" >
-    <h3 >Total : ₹10000</h3>
-    <a class="btn btn-success mt-4" href="/place-order">Place Order</a>
-  </div>
+    <hr />
+    <div style="float:right; margin-right: 110px">
+      <h3>Total : ₹10000</h3>
+      <a class="btn btn-success mt-4" href="/place-order">Place Order</a>
+    </div>
   </div>
 
 </section>
 
-<script>
 
-  function changeQuantity(cartId, productId, count){ 
-    let quantity = parseInt(document.getElementById(productId).innerHTML); 
-  count = parseInt(count); 
-  $.ajax({ url:'/change-product-quantity', 
-  data:{ cart: cartId,
-  product: productId, 
-  count: count, 
-  quantity:quantity }, 
-  method: 'post',
-  success: (response)=>{ if(response.removeProduct){ 
-    alert('Product removed form cart!')
-    location.reload() 
-}else{document.getElementById(productId).innerHTML = quantity + count; } } }) }
 
-function deleteCartItem(cartId, productId, count){ 
-    let quantity = parseInt(document.getElementById(productId).innerHTML); 
-  count = parseInt(count); 
-  $.ajax({ url:'/delete-cart-item', 
-  data:{ cart: cartId,
-  product: productId, 
-  count: count, 
-  quantity:quantity }, 
-  method: 'post',
-  success: (response)=>{ if(response.removeProduct){ 
-    location.reload() 
-} } }) }
+  
 
-</script>
