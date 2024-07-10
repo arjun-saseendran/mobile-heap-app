@@ -18,7 +18,7 @@ function changeQuantity(cartId, productId, count, userId) {
         location.reload();
       } else {
         document.getElementById(productId).innerHTML = quantity + count;
-        document.getElementById("total").innerHTML = total;
+        document.getElementById("total").innerHTML = response.total;
       }
     },
   });
